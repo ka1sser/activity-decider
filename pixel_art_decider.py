@@ -66,7 +66,7 @@ def load_four_color_palette():
         config = json.load(file)
     
     listed = list(config)
-    choice = random.sample(listed)
+    choice = random.sample(listed, k=1)
     return choice
 
 def main():
