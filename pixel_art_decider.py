@@ -18,7 +18,7 @@ def load_objects():
         config = json.load(file)
     
     listed = list(config)
-    choices = random.choices(listed, k=3)
+    choices = random.sample(listed, k=3)
     return choices
 
 def load_pokemons():
@@ -26,7 +26,7 @@ def load_pokemons():
         config = json.load(file)
     
     listed = list(config)
-    choices = random.choices(listed, k=3)
+    choices = random.sample(listed, k=3)
     return choices
 
 def load_animals():
@@ -34,7 +34,7 @@ def load_animals():
         config = json.load(file)
     
     listed = list(config)
-    choices = random.choices(listed, k=3)
+    choices = random.sample(listed, k=3)
     return choices
 
 def load_nature():
@@ -42,7 +42,7 @@ def load_nature():
         config = json.load(file)
     
     listed = list(config)
-    choices = random.choices(listed, k=3)
+    choices = random.sample(listed, k=3)
     return choices
 
 def load_anime_char():
@@ -50,7 +50,7 @@ def load_anime_char():
         config = json.load(file)
     
     listed = list(config)
-    choices = random.choices(listed, k=3)
+    choices = random.sample(listed, k=3)
     return choices
 
 def load_tv_char():
@@ -58,8 +58,16 @@ def load_tv_char():
         config = json.load(file)
     
     listed = list(config)
-    choices = random.choices(listed, k=3)
+    choices = random.sample(listed, k=3)
     return choices
+
+def load_four_color_palette():
+    with open("four_color_palette.json", "r") as file:
+        config = json.load(file)
+    
+    listed = list(config)
+    choice = random.sample(listed)
+    return choice
 
 def main():
     logging.basicConfig(
@@ -72,7 +80,6 @@ def main():
     current_time = datetime.now()
     current_time = current_time.strftime("%B %d, %Y")
     categories = ["object", "pokemon", "animal", "nature", "anime_char", "tv_char"]
-    num_of_colors = [2, 4, 6, 8]
 
     choice_in_categories = random.choice(categories)
     
@@ -100,8 +107,8 @@ def main():
             tv_chars = load_tv_char()
             logging.info(f"Create pixel art for the following: {tv_chars}")
 
-    choice_in_num_of_colors = random.choice(num_of_colors)
-    logging.info(f"You are allowed to use {choice_in_num_of_colors} colors for each artwork.")
+    random_four_color_palette = load_four_color_palette()
+    logging.info(f"You are allowed to use the color palette: {random_four_color_palette}")
     logging.info("MOVE!\n")
     
 if __name__ == "__main__":
