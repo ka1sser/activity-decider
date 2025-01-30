@@ -37,8 +37,8 @@ def load_animals():
     choices = random.sample(listed, k=3)
     return choices
 
-def load_nature():
-    with open("nature.json", "r") as file:
+def load_random_gamedev_assets():
+    with open("random_gamedev_assets.json", "r") as file:
         config = json.load(file)
     
     listed = list(config)
@@ -79,7 +79,7 @@ def main():
 
     current_time = datetime.now()
     current_time = current_time.strftime("%B %d, %Y")
-    categories = ["object", "pokemon", "animal", "nature", "anime_char", "tv_char"]
+    categories = ["object", "pokemon", "animal", "random_gamedev_assets", "anime_char", "tv_char"]
 
     choice_in_categories = random.choice(categories)
     
@@ -97,9 +97,9 @@ def main():
         case "animal":
             animals = load_animals()
             logging.info(f"Create pixel art for the following: {animals}")
-        case "nature":
-            nature = load_nature()
-            logging.info(f"Create pixel art for the following: {nature}")
+        case "random_gamedev_assets":
+            random_gamedev_assets = load_random_gamedev_assets()
+            logging.info(f"Create pixel art for the following: {random_gamedev_assets}")
         case "anime_char":
             anime_chars = load_anime_char()
             logging.info(f"Create pixel art for the following: {anime_chars}")
